@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:launch_spacex/page/launchs_table.dart';
+
+import 'page/homepage.dart';
+
 //
 void main() {
-
-  return runApp(ModularApp(module: /*<MainModule>*/, child: /*<MainWidget>*/));
+  return runApp(ModularApp(module: AppModule(), child: AppWidget()));
 }
+
 class AppModule extends Module {
   @override
   void binds(i) {}
 
   @override
   void routes(r) {
-
+    r.child("/", child: (context) => Homepage());
+    r.child("/launch-table", child: (context) => LaunchTable());
   }
 }
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  // This widget is the root of your application.
-  @override
+class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'launch spaceX',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-
-    home: Container(),
-    );
+    return MaterialApp.router(
+      title: 'My Smart App',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      routerConfig: Modular.routerConfig,
+    ); //added by extension
   }
 }
