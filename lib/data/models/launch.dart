@@ -1,26 +1,53 @@
-class Launch {
+class LaunchProgram {
+  String? name;
   Map<String, dynamic>? image;
-  bool? success;
-  List<String>? crew;
-  String? capsules;
-  String? payloads;
+  String? success;
+  List<dynamic>? crew;
+  // String? capsules;
+  // String? payloads;
   String? launchpad;
+  String? launchpadImage;
   int? flight_number;
   String? date_utc;
 
-  Launch(
-      {required this.image,
+  LaunchProgram(
+      {required this.name,
+      required this.image,
       required this.success,
       required this.crew,
-      required this.capsules,
-      required this.payloads,
+      // required this.capsules,
+      // required this.payloads,
       required this.launchpad,
+      required this.launchpadImage,
       required this.date_utc,
       required this.flight_number});
-  // factory Launch.fromJson(Map<String, dynamic> json) =>
-  //     _$LaunchFromJson(json);
-  //
-  // Map<String, dynamic> toJson() => _$WeatherToJson(this);
+  LaunchProgram.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    image = json['links']['patch'];
+    success = json['success'];
+    crew = json['crew'];
+    // capsules = json['capsules'];
+    // payloads = json['payloads'];
+    launchpad = json['launchpad'];
+    launchpadImage = json['launchpadImage'];
+    flight_number = json['flight_number'];
+    date_utc = json['date_utc'];
+  }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    data['links']['patch'] = this.image;
+    data['success'] = this.success;
+    data['crew'] = this.crew;
+    // data['capsules'] = this.capsules;
+    // data['payloads'] = this.payloads;
+    data['launchpad'] = this.launchpad;
+    // data['launchpadImage'] = this.launchpadImage;
+    data['flight_number'] = this.flight_number;
+    data['date_utc'] = this.date_utc;
+
+    return data;
+  }
 }
 
 //{
