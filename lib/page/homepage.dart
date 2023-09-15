@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:launch_spacex/page/widget_reuse.dart';
-import '../bloc/launch_bloc.dart';
+import '../bloc/launch_bloc/launch_bloc.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -13,41 +13,35 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xff333333),
         appBar: AppBar(title: const Text("Homepage")),
         body: BlocConsumer<SpaceXBloc, SpaceXState>(listener: (context, state) {
-          if (state is SpaceXError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.message),
-              ),
-            );
-          }
+          // if (state.loading == false) {
+          //   ScaffoldMessenger.of(context).showSnackBar(
+          //     SnackBar(
+          //       content: Text("Any Error occured!"),
+          //     ),
+          //   );
+          // }
         }, builder: (context, state) {
           print(state);
-          if (state is SpaceXInitial) {
+          if (state.loading) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is SpaceXLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state is SpaceXLoaded) {
+          } else if (!state.loading && state.listLaunch.isNotEmpty) {
+            print(
+                "Debug: ${state.listLaunch}, ${state.latestLaunch}, ${state.loading}");
             return Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children: [
-                  topicTextWidget("Latest Launch"),
+                  topicTextWidget("Latest Launch", Colors.white54),
                   latestLaunchWidget(state.latestLaunch, context),
-                  topicTextWidget("Launches"),
+                  topicTextWidget("Launches", Colors.white54),
 
                   launchListView(state.listLaunch, context),
                   // Text(state.launch.launchpad.toString()),
