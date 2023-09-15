@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 
-import 'launch_info.dart';
+import '../../more_information/view/launch_info.dart';
 
 Widget latestLaunchWidget(state, context) {
   String url = state.launchpadImage.toString();
@@ -64,7 +64,7 @@ Widget launchListView(launch, context) {
       itemBuilder: (context, index) {
         return GestureDetector(
             onTap: () {
-              Modular.to.navigate('/launch-info', arguments: launch[index].id);
+              Modular.to.navigate('/launch-info', arguments: launch[index]);
             },
             child: Container(
               margin: const EdgeInsets.only(top: 10, bottom: 10),

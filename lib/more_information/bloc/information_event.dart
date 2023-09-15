@@ -8,6 +8,6 @@ abstract class InformationEvent {
 }
 
 class InformationRequest extends InformationEvent {
-  final String? id;
-  const InformationRequest({required this.id});
+  final LaunchProgram launchProgram;
+  const InformationRequest({required this.launchProgram});
 }

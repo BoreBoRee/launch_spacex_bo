@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:equatable/equatable.dart';
 
-import '../../data/models/launch.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+
+import '../model/launch_program_model.dart';
 
 part 'launch_event.dart';
 part 'launch_state.dart';

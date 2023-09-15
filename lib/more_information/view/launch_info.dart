@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'widget_reuse.dart';
-import '../bloc/info_bloc/information_bloc.dart';
+import '../../homepage_and_table/model/launch_program_model.dart';
+import '../../homepage_and_table/view/widget_reuse.dart';
+import '../bloc/information_bloc.dart';
 // import 'package:flutter_modular/flutter_modular.dart';
-import 'navigate.dart';
 
 class LaunchInformation extends StatefulWidget {
-  const LaunchInformation({Key? key, required this.id}) : super(key: key);
-  final id;
+  const LaunchInformation({Key? key, required this.launchProgram})
+      : super(key: key);
+  final LaunchProgram launchProgram;
 
   @override
   State<LaunchInformation> createState() => _LaunchInformationState();
@@ -16,7 +17,9 @@ class LaunchInformation extends StatefulWidget {
 class _LaunchInformationState extends State<LaunchInformation> {
   @override
   Widget build(BuildContext context) {
-    context.read<InformationBloc>().add(InformationRequest(id: widget.id));
+    context
+        .read<InformationBloc>()
+        .add(InformationRequest(launchProgram: widget.launchProgram));
     return Scaffold(
         backgroundColor: Color(0xff3333333),
         body: BlocConsumer<InformationBloc, InformationState>(
@@ -44,7 +47,7 @@ class _LaunchInformationState extends State<LaunchInformation> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        pop();
+                        // todo!! make back button function
                       },
                       child: Padding(
                         padding:

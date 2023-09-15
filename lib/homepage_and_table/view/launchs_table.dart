@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
 import 'package:intl/intl.dart';
-import '../bloc/launch_bloc/launch_bloc.dart';
+import '../bloc/launch_bloc.dart';
 
 class LaunchTable extends StatefulWidget {
   const LaunchTable({Key? key}) : super(key: key);

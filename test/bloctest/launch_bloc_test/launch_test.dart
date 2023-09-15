@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:launch_spacex/bloc/launch_bloc/launch_bloc.dart';
-import 'package:launch_spacex/data/models/launch.dart';
-import 'package:launch_spacex/data/space_x_repository.dart';
+import 'package:launch_spacex/homepage_and_table/bloc/launch_bloc.dart';
+import 'package:launch_spacex/homepage_and_table/model/launch_program_model.dart';
+import 'package:launch_spacex/homepage_and_table/repository/spaceX_repository.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockLaunch extends Mock implements LaunchProgram {}

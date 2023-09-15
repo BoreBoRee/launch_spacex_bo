@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
-import 'package:launch_spacex/page/widget_reuse.dart';
-import '../bloc/launch_bloc/launch_bloc.dart';
+
+import '../bloc/launch_bloc.dart';
+import 'widget_reuse.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
