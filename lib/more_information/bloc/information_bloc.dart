@@ -16,8 +16,6 @@ part 'information_event.dart';
 part 'information_state.dart';
 
 class InformationBloc extends Bloc<InformationEvent, InformationState> {
-  // , required this.spaceXRepository
-  // final InformationFetchRepository spaceXInfoRepository;
   final RocketRepository rocketRepository;
   final LaunchOneRepository launchOneRepository;
   final CrewRepository crewRepository;
@@ -47,20 +45,16 @@ class InformationBloc extends Bloc<InformationEvent, InformationState> {
     emit(state.copyWith(
       loading: true,
     ));
-    print('1');
-    // final LaunchProgram launch =
-    //     await launchOneRepository.getOneLaunchRepo(event.id);
-    print('2 Launch: ${event.launchProgram.id}');
 
     final landAndLaunchPad =
         await padsRepository.launchRepository(event.launchProgram.launchpad);
-    print('3');
+
     final crew =
         await crewRepository.getCrewInformationRepo(event.launchProgram.crew);
-    print('4');
+
     final rocket =
         await rocketRepository.getOneRocketRepo(event.launchProgram.rocket);
-    print('5');
+
     // await Future.wait([launch, landAndLaunchPad, crew, rocket]).then((value){
     //
     // });

@@ -6,7 +6,6 @@ import '../model/rocket_model.dart';
 class RocketRepository {
   final SpaceXDataProvider rocketRepository = SpaceXDataProvider();
   Future<dynamic> getOneRocketRepo(id) async {
-    print("Getting Get infomration rocket");
     final http.Response rawOneRocket = await rocketRepository.getOneRocket(id);
     final json = jsonDecode(rawOneRocket.body);
     var oneRocket = Rocket(
@@ -15,7 +14,6 @@ class RocketRepository {
       description: json['description'] ?? "",
       image: json['flickr_images'][0] ?? "",
     );
-    print("Load oneRocket complete");
     return oneRocket;
   }
 }

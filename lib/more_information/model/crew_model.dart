@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class CrewInformation extends Equatable {
   String? name;
   String? agency;
@@ -14,11 +15,11 @@ class CrewInformation extends Equatable {
     id = json['id'];
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['agency'] = this.agency;
-    data['image'] = this.image;
-    data['id'] = this.id;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['agency'] = agency;
+    data['image'] = image;
+    data['id'] = id;
 
     return data;
   }

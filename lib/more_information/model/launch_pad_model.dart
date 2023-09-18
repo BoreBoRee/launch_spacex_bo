@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class LaunchPad extends Equatable {
   String? name;
   String? fullName;
@@ -33,16 +34,16 @@ class LaunchPad extends Equatable {
     image = json['image'];
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['full_name'] = this.fullName;
-    data['locality'] = this.locality;
-    data['region'] = this.region;
-    data['timezone'] = this.timezone;
-    data['details'] = this.details;
-    data['status'] = this.status;
-    data['id'] = this.id;
-    data['image'] = this.image;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['full_name'] = fullName;
+    data['locality'] = locality;
+    data['region'] = region;
+    data['timezone'] = timezone;
+    data['details'] = details;
+    data['status'] = status;
+    data['id'] = id;
+    data['image'] = image;
 
     return data;
   }

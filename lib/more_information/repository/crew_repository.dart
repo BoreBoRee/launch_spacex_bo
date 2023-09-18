@@ -7,14 +7,11 @@ class CrewRepository {
   final SpaceXDataProvider crewDataRepo = SpaceXDataProvider();
 
   Future<dynamic> getCrewInformationRepo(ids) async {
-    print("Getting Get infomration crew");
     List<CrewInformation> crewInformation = [];
     if (ids == null || ids == "") {
-      print("No data crew");
       return CrewInformation();
     }
     for (var id in ids) {
-      print("Getting crew id: $id");
       final http.Response rawCrewInformation =
           await crewDataRepo.getRawCrew(id);
       final json = jsonDecode(rawCrewInformation.body);
@@ -26,7 +23,6 @@ class CrewRepository {
       );
       crewInformation.add(crew);
     }
-    print("Load crewInformation complete");
     return crewInformation;
   }
 }

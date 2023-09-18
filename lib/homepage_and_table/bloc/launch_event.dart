@@ -11,5 +11,4 @@ abstract class SpaceXEvent extends Equatable {
 
 class LaunchRequest extends SpaceXEvent {
   const LaunchRequest();
-  // LaunchRequest();
 }

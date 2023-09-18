@@ -14,8 +14,9 @@ import 'more_information/repository/launch_one_repository.dart';
 import 'more_information/repository/pads_repository.dart';
 import 'more_information/view/launch_info.dart';
 
+//
 void main() {
-  return runApp(ModularApp(module: AppModule(), child: AppWidget()));
+  return runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }
 
 class AppModule extends Module {
@@ -24,21 +25,26 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.child("/", child: (context) => Homepage(), children: [
-      ChildRoute('/launch-table', child: (_) => LaunchTable()),
-      ChildRoute('/launch-info',
-          child: (_) => LaunchInformation(launchProgram: r.args.data)),
-    ]);
+    r.child(
+      "/",
+      child: (context) => const Homepage(),
+    );
+    r.child("/launch-table", child: (context) => const LaunchTable());
+    r.child("/launch-info",
+        child: (context) => LaunchInformation(launchProgram: r.args.data));
   }
 }
 
 class AppWidget extends StatelessWidget {
+  const AppWidget({super.key});
+
+  @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) =>
-                SpaceXBloc(SpaceXRepository())..add(LaunchRequest()),
+                SpaceXBloc(SpaceXRepository())..add(const LaunchRequest()),
           ),
           BlocProvider(
               create: (context) => InformationBloc(LaunchOneRepository(),

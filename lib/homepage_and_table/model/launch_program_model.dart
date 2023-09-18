@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class LaunchProgram extends Equatable {
   String? name;
   Map<String, dynamic>? image;
@@ -9,10 +10,10 @@ class LaunchProgram extends Equatable {
   String? id;
   String? launchpad;
   String? launchpadImage;
-  String? date_utc;
-  String? landpad;
+  String? dateUtc;
+  String? landPad;
   LaunchProgram({
-    this.landpad = '',
+    this.landPad = '',
     this.name = '',
     this.image = const {},
     this.success = '',
@@ -21,10 +22,10 @@ class LaunchProgram extends Equatable {
     this.rocket = '',
     this.launchpad = '',
     this.launchpadImage = '',
-    this.date_utc = '',
+    this.dateUtc = '',
   });
   LaunchProgram.fromJson(Map<String, dynamic> json) {
-    landpad = json['landpad'];
+    landPad = json['landpad'];
     name = json['name'];
     image = json['links']['patch'];
     success = json['success'];
@@ -35,29 +36,27 @@ class LaunchProgram extends Equatable {
     // payloads = json['payloads'];
     launchpad = json['launchpad'];
     launchpadImage = json['launchpadImage'];
-    date_utc = json['date_utc'];
+    dateUtc = json['date_utc'];
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['landpad'] = this.landpad;
-    data['name'] = this.name;
-    data['links']['patch'] = this.image;
-    data['success'] = this.success;
-    data['crew'] = this.crew;
-    data['id'] = this.id;
-    data['rocket'] = this.rocket;
-    // data['capsules'] = this.capsules;
-    // data['payloads'] = this.payloads;
-    data['launchpad'] = this.launchpad;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['landpad'] = landPad;
+    data['name'] = name;
+    data['links']['patch'] = image;
+    data['success'] = success;
+    data['crew'] = crew;
+    data['id'] = id;
+    data['rocket'] = rocket;
+    data['launchpad'] = launchpad;
     // data['launchpadImage'] = this.launchpadImage;
-    data['date_utc'] = this.date_utc;
+    data['date_utc'] = dateUtc;
 
     return data;
   }
 
   @override
   List<Object?> get props => [
-        landpad,
+        landPad,
         name,
         image,
         success,
@@ -66,6 +65,6 @@ class LaunchProgram extends Equatable {
         rocket,
         launchpad,
         launchpadImage,
-        date_utc,
+        dateUtc,
       ];
 }
