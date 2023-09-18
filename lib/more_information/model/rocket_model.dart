@@ -8,21 +8,25 @@ class Rocket extends Equatable {
   String? id;
   String? description;
 
-  Rocket(
-      {this.name = '', this.description = '', this.image = '', this.id = ''});
+  Rocket({
+    this.name = '',
+    this.description = '',
+    this.image = '',
+    this.id = '',
+  });
   Rocket.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     description = json['description'];
     image = json['image'];
     id = json['id'];
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
     data['description'] = description;
     data['image'] = image;
     data['id'] = id;
-
     return data;
   }
 

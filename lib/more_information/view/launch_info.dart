@@ -11,6 +11,7 @@ import '../bloc/information_bloc.dart';
 class LaunchInformation extends StatefulWidget {
   const LaunchInformation({Key? key, required this.launchProgram})
       : super(key: key);
+
   final LaunchProgram launchProgram;
 
   @override
@@ -20,9 +21,6 @@ class LaunchInformation extends StatefulWidget {
 class _LaunchInformationState extends State<LaunchInformation> {
   @override
   void initState() {
-    if (kDebugMode) {
-      print(widget.launchProgram.name);
-    }
     BlocProvider.of<InformationBloc>(context)
         .add(InformationRequest(launchProgram: widget.launchProgram));
     super.initState();

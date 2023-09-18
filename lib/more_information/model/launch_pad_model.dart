@@ -12,16 +12,18 @@ class LaunchPad extends Equatable {
   String? id;
   String? image;
 
-  LaunchPad(
-      {this.name = '',
-      this.fullName = '',
-      this.locality = '',
-      this.region = '',
-      this.timezone = '',
-      this.details = '',
-      this.status = '',
-      this.id = '',
-      this.image = ''});
+  LaunchPad({
+    this.name = '',
+    this.fullName = '',
+    this.locality = '',
+    this.region = '',
+    this.timezone = '',
+    this.details = '',
+    this.status = '',
+    this.id = '',
+    this.image = '',
+  });
+
   LaunchPad.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     fullName = json['full_name'];
@@ -33,6 +35,7 @@ class LaunchPad extends Equatable {
     id = json['id'];
     image = json['image'];
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
@@ -44,7 +47,6 @@ class LaunchPad extends Equatable {
     data['status'] = status;
     data['id'] = id;
     data['image'] = image;
-
     return data;
   }
 

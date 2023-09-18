@@ -11,6 +11,7 @@ class Setting extends StatefulWidget {
 
 class _SettingState extends State<Setting> {
   bool switchValue = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +30,9 @@ class _SettingState extends State<Setting> {
                 const Text('app.language',
                         style: TextStyle(color: Colors.white, fontSize: 18))
                     .tr(),
+
+                /// translate language switch
                 CupertinoSwitch(
-                  // This bool value toggles the switch.
                   value: switchValue,
                   activeColor: Colors.orange,
                   onChanged: (bool? value) {
@@ -42,7 +44,6 @@ class _SettingState extends State<Setting> {
                         context.setLocale(Locale('en'));
                       }
                     });
-                    // This is called when the user toggles the switch.
                   },
                 ),
               ])

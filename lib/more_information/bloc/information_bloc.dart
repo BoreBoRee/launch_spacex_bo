@@ -24,10 +24,11 @@ class InformationBloc extends Bloc<InformationEvent, InformationState> {
   InformationBloc(this.launchOneRepository, this.crewRepository,
       this.padsRepository, this.rocketRepository)
       : super(InformationState(
-            rocket: Rocket(),
-            crew: const [],
-            launch: LaunchProgram(),
-            landAndLaunchPad: LaunchPad())) {
+          rocket: Rocket(),
+          crew: const [],
+          launch: LaunchProgram(),
+          landAndLaunchPad: LaunchPad(),
+        )) {
     on<InformationRequest>(onGetInformation);
   }
 
@@ -48,12 +49,11 @@ class InformationBloc extends Bloc<InformationEvent, InformationState> {
 
     final landAndLaunchPad =
         await padsRepository.launchRepository(event.launchProgram.launchpad);
-
     final crew =
         await crewRepository.getCrewInformationRepo(event.launchProgram.crew);
-
     final rocket =
         await rocketRepository.getOneRocketRepo(event.launchProgram.rocket);
+
     emit(state.copyWith(
       loading: false,
       rocket: rocket,

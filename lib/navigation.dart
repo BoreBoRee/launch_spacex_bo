@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -19,21 +20,18 @@ class _NavigationState extends State<NavigationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: const Icon(Icons.home),
+            label: 'app.homepage'.tr(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Second',
+            icon: const Icon(Icons.settings),
+            label: 'app.setting'.tr(),
           ),
         ],
-        currentIndex: Modular.to.path == '/homepage'
-            ? 0
-            : 1, // Set the current index based on the route
+        currentIndex: Modular.to.path == '/homepage' ? 0 : 1,
         onTap: (index) {
-          print("index: $index");
           setState(() {
             if (index == 0) {
               Modular.to.navigate('/homepage');
@@ -41,11 +39,9 @@ class _NavigationState extends State<NavigationPage> {
               Modular.to.navigate('/setting');
             }
           });
-
-          // Add more logic for other tabs
         },
       ),
-      body: RouterOutlet(),
+      body: const RouterOutlet(),
     );
   }
 }

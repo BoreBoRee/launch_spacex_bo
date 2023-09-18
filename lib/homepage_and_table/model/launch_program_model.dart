@@ -33,8 +33,6 @@ class LaunchProgram extends Equatable {
     crew = json['crew'];
     id = json['id'];
     rocket = json['rocket'];
-    // capsules = json['capsules'];
-    // payloads = json['payloads'];
     launchpad = json['launchpad'];
     launchpadImage = json['launchpadImage'];
     date_utc = json['date_utc'];
@@ -49,7 +47,6 @@ class LaunchProgram extends Equatable {
     data['id'] = id;
     data['rocket'] = rocket;
     data['launchpad'] = launchpad;
-    // data['launchpadImage'] = this.launchpadImage;
     data['date_utc'] = date_utc;
 
     return data;

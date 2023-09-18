@@ -66,19 +66,19 @@ Widget latestLaunchWidget(state, context) {
               width: screenSize.width * 0.25,
               height: double.infinity,
               decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.black.withOpacity(0.6),
                   borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(8),
                       bottomRight: Radius.circular(8))),
               child: (state.success.toString() == "true")
                   ? Text(
-                      "Success",
+                      "app.success".tr(),
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.green.shade400),
                     )
-                  : Text("Failure",
+                  : Text("app.failed".tr(),
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -138,8 +138,6 @@ Widget launchListView(launch, context) {
                               width: screenSize.width * 0.15,
                               height: screenSize.width * 0.15,
                               decoration: BoxDecoration(
-
-                                  // color: Colors.grey,
                                   border:
                                       Border.all(color: Colors.grey, width: 1),
                                   borderRadius: const BorderRadius.all(
@@ -160,7 +158,7 @@ Widget launchListView(launch, context) {
                                 children: [
                                   Text(sortedLaunch[index].name.toString()),
                                   Text(
-                                      "Date: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(sortedLaunch[index].date_utc.toString()))}")
+                                      "${"filter.date".tr()}: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(sortedLaunch[index].date_utc.toString()))}")
                                 ],
                               ))
                         ],
@@ -183,7 +181,7 @@ Widget launchListView(launch, context) {
                               ? "app.success".tr()
                               : "app.failed".tr(),
                       style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 18),
+                          fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                   )
                 ],

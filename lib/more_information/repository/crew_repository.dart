@@ -9,7 +9,9 @@ class CrewRepository {
   Future<dynamic> getCrewInformationRepo(ids) async {
     List<CrewInformation> crewInformation = [];
     if (ids.isEmpty) {
-      return [CrewInformation()];
+      return [
+        CrewInformation(),
+      ];
     }
     for (var id in ids) {
       final http.Response rawCrewInformation =

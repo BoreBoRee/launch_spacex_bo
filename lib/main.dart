@@ -1,10 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
 import 'package:launch_spacex/more_information/repository/rocket_repository.dart';
 import 'package:launch_spacex/homepage_and_table/repository/spaceX_repository.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'homepage_and_table/view/homepage.dart';
 import 'homepage_and_table/view/launchs_table.dart';
@@ -17,7 +15,6 @@ import 'more_information/view/launch_info.dart';
 import 'navigation.dart';
 import 'setting/setting.dart';
 
-//
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -37,22 +34,15 @@ class AppModule extends Module {
   @override
   void routes(r) {
     r.child('/', child: (context) => const NavigationPage(), children: [
-      ChildRoute('/homepage', child: (context) => const Homepage(), children: [
-        ChildRoute('/launch-table', child: (context) => const LaunchTable()),
-      ]),
+      ChildRoute(
+        '/homepage',
+        child: (context) => const Homepage(),
+      ),
+      ChildRoute('/launch-table', child: (context) => const LaunchTable()),
       ChildRoute('/launch-info',
           child: (context) => LaunchInformation(launchProgram: r.args.data)),
       ChildRoute('/setting', child: (context) => const Setting()),
     ]);
-    // r.child(
-    //   "/",
-    //   child: (context) => const NavigationPage(),
-    // );
-    // r.child("/homepage", child: (context) => const Homepage());
-    // r.child("/launch-table", child: (context) => const LaunchTable());
-    // r.child("/launch-info",
-    //     child: (context) => LaunchInformation(launchProgram: r.args.data));
-    // r.child("/setting", child: (context) => const Setting());
   }
 }
 

@@ -38,19 +38,24 @@ class _HomepageState extends State<Homepage> {
                     children: [
                       topicTextWidget("app.latestLaunches", Colors.white54),
                       latestLaunchWidget(state.latestLaunch, context),
-                      topicTextWidget("app.launches", Colors.white54),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            topicTextWidget("app.launches", Colors.white54),
+                            ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.orange,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8))),
+                                onPressed: () {
+                                  Modular.to.navigate('launch-table');
+                                },
+                                child: Text("app.seeMore".tr())),
+                          ]),
 
                       launchListView(state.listLaunch, context),
                       // Text(state.launch.launchpad.toString()),
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8))),
-                          onPressed: () {
-                            Modular.to.navigate('launch-table');
-                          },
-                          child: const Text("See More")),
                     ],
                   ),
                 ));

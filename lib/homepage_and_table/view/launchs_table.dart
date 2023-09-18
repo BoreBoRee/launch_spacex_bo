@@ -320,7 +320,7 @@ class _TableWidgetState extends State<TableWidget> {
                                     ? "app.success".tr()
                                     : "app.failed".tr(),
                             style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
+                                fontWeight: FontWeight.bold, fontSize: 15),
                           ),
                         )
                       ],

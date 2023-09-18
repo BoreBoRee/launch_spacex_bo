@@ -9,15 +9,20 @@ import 'package:meta/meta.dart';
 import '../model/launch_program_model.dart';
 
 part 'launch_event.dart';
+
 part 'launch_state.dart';
 
 class SpaceXBloc extends Bloc<SpaceXEvent, SpaceXState> {
   final SpaceXRepository spaceXRepository;
+
   SpaceXBloc(this.spaceXRepository)
-      : super(
-            SpaceXState(latestLaunch: LaunchProgram(), listLaunch: const [])) {
+      : super(SpaceXState(
+          latestLaunch: LaunchProgram(),
+          listLaunch: const [],
+        )) {
     on<LaunchRequest>(onGetLaunch);
   }
+
   void onGetLaunch(
     SpaceXEvent event,
     Emitter<SpaceXState> emit,
@@ -29,17 +34,14 @@ class SpaceXBloc extends Bloc<SpaceXEvent, SpaceXState> {
     emit(state.copyWith(
       loading: true,
     ));
+
     final latestLaunch = await spaceXRepository.getLatestLaunch();
     final launchList = await spaceXRepository.getLaunchList();
+
     emit(state.copyWith(
       loading: false,
       latestLaunch: latestLaunch,
       listLaunch: launchList,
     ));
-    // emit(SpaceXLoaded(latestLaunch: latestLaunch, listLaunch: launchList));
-
-    // print("Error: $e");
-    // emit(SpaceXError(message: e.toString()));
-    //
   }
 }
