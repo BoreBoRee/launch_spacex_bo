@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../../dataprovider_api/spaceX_data_provider.dart';
-import '../model/launch_pad_model.dart';
+import 'package:launch_spacex/dataprovider_api/spaceX_data_provider.dart';
+import 'package:launch_spacex/more_information/model/launch_pad_model.dart';
+
 
 class PadsRepository {
   Future<dynamic> launchRepository(launch) async {

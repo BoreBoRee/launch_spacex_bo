@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../../dataprovider_api/spaceX_data_provider.dart';
-import '../model/crew_model.dart';
+import 'package:launch_spacex/dataprovider_api/spaceX_data_provider.dart';
+import 'package:launch_spacex/more_information/model/crew_model.dart';
 
 class CrewRepository {
   final SpaceXDataProvider crewDataRepo = SpaceXDataProvider();

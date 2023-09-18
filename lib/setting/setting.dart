@@ -6,6 +6,7 @@ class Setting extends StatefulWidget {
   const Setting({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _SettingState createState() => _SettingState();
 }
 
@@ -39,9 +40,9 @@ class _SettingState extends State<Setting> {
                     setState(() {
                       switchValue = value ?? false;
                       if (context.locale.languageCode == 'en') {
-                        context.setLocale(Locale('th'));
+                        context.setLocale(const Locale('th'));
                       } else {
-                        context.setLocale(Locale('en'));
+                        context.setLocale(const Locale('en'));
                       }
                     });
                   },

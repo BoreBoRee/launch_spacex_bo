@@ -3,8 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intl/intl.dart';
-import '../bloc/launch_bloc.dart';
+import 'package:launch_spacex/homepage_and_table/bloc/launch_bloc.dart';
 
 class LaunchTable extends StatefulWidget {
   const LaunchTable({Key? key}) : super(key: key);
@@ -71,7 +70,6 @@ class _TableWidgetState extends State<TableWidget> {
   void initState() {
     super.initState();
     items = widget.launchList;
-
     originalList = widget.launchList;
   }
 
@@ -93,7 +91,7 @@ class _TableWidgetState extends State<TableWidget> {
         child: Column(mainAxisSize: MainAxisSize.min, children: [
       /// Search Bar
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(5.0),
         child: TextField(
           onChanged: (value) {
             filterSearchResults(value);
@@ -107,7 +105,7 @@ class _TableWidgetState extends State<TableWidget> {
               hintText: hintText,
               prefixIcon: const Icon(Icons.search),
               border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)))),
         ),
       ),
       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
@@ -139,8 +137,8 @@ class _TableWidgetState extends State<TableWidget> {
                 child: Center(
                     child: Text(
                   _isSortDate
-                      ? "filter.date".tr() + "↑"
-                      : "filter.date".tr() + "↓",
+                      ? "${"filter.date".tr()}↑"
+                      : "${"filter.date".tr()}↓",
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 )),
               ),
@@ -268,6 +266,7 @@ class _TableWidgetState extends State<TableWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
+                                /// Mission image
                                 Container(
                                     padding: const EdgeInsets.all(2),
                                     margin: const EdgeInsets.all(10),
@@ -280,10 +279,32 @@ class _TableWidgetState extends State<TableWidget> {
                                             color: Colors.grey, width: 1),
                                         borderRadius: const BorderRadius.all(
                                             Radius.circular(8))),
-                                    child: Image.network(
-                                      items[index].image['small'].toString(),
-                                      fit: BoxFit.cover,
-                                    )),
+                                    child: (items[index]
+                                                .image['small']
+                                                .toString() !=
+                                            "null")
+                                        ? Image.network(
+                                            items[index]
+                                                .image['small']
+                                                .toString(),
+                                            fit: BoxFit.cover,
+                                          )
+                                        : SizedBox(
+                                            width: screenSize.width * 0.15,
+                                            height: screenSize.width * 0.15,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                const Icon(Icons.close_rounded,
+                                                    size: 30),
+                                                const Text(
+                                                  "app.noPicture",
+                                                  style:
+                                                      TextStyle(fontSize: 10),
+                                                ).tr()
+                                              ],
+                                            ))),
 
                                 /// Mission Information
                                 Container(

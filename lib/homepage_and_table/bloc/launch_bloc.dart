@@ -1,15 +1,10 @@
 import 'dart:async';
 import 'package:equatable/equatable.dart';
-
 import 'package:bloc/bloc.dart';
+import 'package:launch_spacex/homepage_and_table/model/launch_program_model.dart';
 import 'package:launch_spacex/homepage_and_table/repository/spaceX_repository.dart';
-
 import 'package:meta/meta.dart';
-
-import '../model/launch_program_model.dart';
-
 part 'launch_event.dart';
-
 part 'launch_state.dart';
 
 class SpaceXBloc extends Bloc<SpaceXEvent, SpaceXState> {

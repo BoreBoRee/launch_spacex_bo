@@ -30,6 +30,8 @@ class _NavigationState extends State<NavigationPage> {
             label: 'app.setting'.tr(),
           ),
         ],
+        selectedItemColor: Colors.orange,
+        unselectedItemColor: const Color(0xff3333333),
         currentIndex: Modular.to.path == '/homepage' ? 0 : 1,
         onTap: (index) {
           setState(() {

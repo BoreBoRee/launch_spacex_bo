@@ -12,7 +12,8 @@
     "noData": "No data",
     "language": "Change language",
     "homepage": "Homepage",
-    "launchTable": "Launch Table"
+    "launchTable": "Launch Table",
+    "noPicture": "No picture"
   },
   "filter": {
     "date": "Date",
@@ -27,6 +28,7 @@
     "crew": "Crew",
     "mission" : "Mission",
     "detail": "Details",
-    "rocket": "Rocket"
+    "rocket": "Rocket",
+    "noCrew": "No crew"
   }
 }
