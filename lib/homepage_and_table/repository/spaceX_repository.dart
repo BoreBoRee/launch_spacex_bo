@@ -26,7 +26,7 @@ class SpaceXRepository {
         landPad: json['cores'][0]['landpad'] ?? "not found",
         launchpad: json['launchpad'] ?? "",
         launchpadImage: imageLaunchPad,
-        dateUtc: json['date_utc'] ?? "",
+        date_utc: json['date_utc'] ?? "",
       );
       return latestLaunch;
     } catch (e) {
@@ -51,7 +51,7 @@ class SpaceXRepository {
         landPad: json[i]['cores'][0]['landpad'] ?? "",
         launchpad: json[i]['launchpad'] ?? "",
         launchpadImage: "",
-        dateUtc: json[i]['date_utc'] ?? "",
+        date_utc: json[i]['date_utc'] ?? "",
       );
       launchList.add(launchProgram);
     }

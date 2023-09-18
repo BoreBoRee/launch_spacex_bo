@@ -54,10 +54,6 @@ class InformationBloc extends Bloc<InformationEvent, InformationState> {
 
     final rocket =
         await rocketRepository.getOneRocketRepo(event.launchProgram.rocket);
-
-    // await Future.wait([launch, landAndLaunchPad, crew, rocket]).then((value){
-    //
-    // });
     emit(state.copyWith(
       loading: false,
       rocket: rocket,

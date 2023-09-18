@@ -1,0 +1,33 @@
+{
+  "app": {
+    "title": "spaceX",
+    "description": "spaceX",
+    "changeLanguage": "Change language",
+    "setting": "การตั้งค่า",
+    "latestLaunches": "การปล่อยล่าสุด",
+    "launches": "การปล่อย",
+    "seeMore": "ดูเพิ่มเติม",
+    "success": "สำเร็จ",
+    "failed": "ล้มเหลว",
+    "noData": "ไม่มีข้อมูล",
+    "language": "เปลี่ยนภาษา",
+    "homepage": "หน้าแรก",
+    "launchTable": "ตารางการปล่อย"
+
+  },
+  "filter": {
+    "date": "วันที่",
+    "name": "ชื่อ",
+    "clearFilter": "ล้างตัวกรอง",
+    "search": "ค้นหา",
+    "dateSorting" : "เรียงลำดับตามวันที่",
+    "nameSorting" : "เรียงลำดับตามชื่อ",
+    "clear": "ล้าง"
+  },
+  "information": {
+    "crew": "ลูกเรือ",
+    "mission" : "ภารกิจ",
+    "detail": "รายละเอียด",
+    "rocket": "จรวด"
+  }
+}

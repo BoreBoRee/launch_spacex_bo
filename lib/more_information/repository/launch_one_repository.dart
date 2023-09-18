@@ -21,7 +21,7 @@ class LaunchOneRepository {
         launchpad: json['launchpad'] ?? "",
         landPad: json['landpad'] ?? "",
         launchpadImage: "",
-        dateUtc: json['date_utc'] ?? "",
+        date_utc: json['date_utc'] ?? "",
       );
       return oneLaunch;
     }
