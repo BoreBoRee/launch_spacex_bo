@@ -78,13 +78,7 @@ Widget launchListView(launch, context) {
                                 children: [
                                   Text(sortedLaunch[index].name.toString()),
                                   Text(
-                                    DateFormat(
-                                            '${"filter.date".tr()}: yyyy-MM-dd')
-                                        .format(DateTime.parse(
-                                            sortedLaunch[index]
-                                                .date_utc
-                                                .toString())),
-                                  )
+                                      "${"filter.date".tr()}: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(sortedLaunch[index].date_utc.toString()))}")
                                 ],
                               ))
                         ],
