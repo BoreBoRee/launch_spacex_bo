@@ -2,15 +2,16 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:launch_spacex/homepage_and_table/model/launch_program_model.dart';
+import 'package:launch_spacex/more_information/model/crew_model.dart';
+import 'package:launch_spacex/more_information/model/launch_pad_model.dart';
+import 'package:launch_spacex/more_information/model/rocket_model.dart';
+import 'package:launch_spacex/more_information/repository/crew_repository.dart';
+import 'package:launch_spacex/more_information/repository/launch_one_repository.dart';
+import 'package:launch_spacex/more_information/repository/pads_repository.dart';
+import 'package:launch_spacex/more_information/repository/rocket_repository.dart';
 import 'package:meta/meta.dart';
-import '../../homepage_and_table/model/launch_program_model.dart';
-import '../model/crew_model.dart';
-import '../model/launch_pad_model.dart';
-import '../model/rocket_model.dart';
-import '../repository/crew_repository.dart';
-import '../repository/launch_one_repository.dart';
-import '../repository/pads_repository.dart';
-import '../repository/rocket_repository.dart';
+
 part 'information_event.dart';
 
 part 'information_state.dart';
@@ -24,10 +25,11 @@ class InformationBloc extends Bloc<InformationEvent, InformationState> {
   InformationBloc(this.launchOneRepository, this.crewRepository,
       this.padsRepository, this.rocketRepository)
       : super(InformationState(
-            rocket: Rocket(),
-            crew: const [],
-            launch: LaunchProgram(),
-            landAndLaunchPad: LaunchPad())) {
+          rocket: Rocket(),
+          crew: const [],
+          launch: LaunchProgram(),
+          landAndLaunchPad: LaunchPad(),
+        )) {
     on<InformationRequest>(onGetInformation);
   }
 
@@ -48,16 +50,11 @@ class InformationBloc extends Bloc<InformationEvent, InformationState> {
 
     final landAndLaunchPad =
         await padsRepository.launchRepository(event.launchProgram.launchpad);
-
     final crew =
         await crewRepository.getCrewInformationRepo(event.launchProgram.crew);
-
     final rocket =
         await rocketRepository.getOneRocketRepo(event.launchProgram.rocket);
 
-    // await Future.wait([launch, landAndLaunchPad, crew, rocket]).then((value){
-    //
-    // });
     emit(state.copyWith(
       loading: false,
       rocket: rocket,

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../../dataprovider_api/spaceX_data_provider.dart';
-import '../../homepage_and_table/model/launch_program_model.dart';
+import 'package:launch_spacex/dataprovider_api/spaceX_data_provider.dart';
+import 'package:launch_spacex/homepage_and_table/model/launch_program_model.dart';
 
 class LaunchOneRepository {
   final SpaceXDataProvider launchOneRepo = SpaceXDataProvider();
@@ -21,7 +21,7 @@ class LaunchOneRepository {
         launchpad: json['launchpad'] ?? "",
         landPad: json['landpad'] ?? "",
         launchpadImage: "",
-        dateUtc: json['date_utc'] ?? "",
+        date_utc: json['date_utc'] ?? "",
       );
       return oneLaunch;
     }

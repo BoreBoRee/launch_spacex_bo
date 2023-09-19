@@ -6,12 +6,13 @@ class InformationState extends Equatable {
   final List<CrewInformation> crew;
   final LaunchPad landAndLaunchPad;
   final bool loading;
+
   const InformationState(
       {this.loading = false,
       required this.crew,
       required this.launch,
       required this.rocket,
-      required this.landAndLaunchPad});
+      required this.landAndLaunchPad,});
 
   InformationState copyWith(
       {bool? loading,
@@ -24,7 +25,7 @@ class InformationState extends Equatable {
         launch: launch ?? this.launch,
         rocket: rocket ?? this.rocket,
         crew: crew ?? this.crew,
-        landAndLaunchPad: landAndLaunchPad ?? this.landAndLaunchPad);
+        landAndLaunchPad: landAndLaunchPad ?? this.landAndLaunchPad,);
   }
 
   @override

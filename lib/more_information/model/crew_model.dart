@@ -6,8 +6,12 @@ class CrewInformation extends Equatable {
   String? agency;
   String? image;
   String? id;
-  CrewInformation(
-      {this.name = '', this.agency = '', this.image = '', this.id = ''});
+  CrewInformation({
+    this.name = '',
+    this.agency = '',
+    this.image = '',
+    this.id = '',
+  });
   CrewInformation.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     agency = json['agency'];

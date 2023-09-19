@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../../dataprovider_api/spaceX_data_provider.dart';
-import '../model/rocket_model.dart';
+import 'package:launch_spacex/dataprovider_api/spaceX_data_provider.dart';
+import 'package:launch_spacex/more_information/model/rocket_model.dart';
 
 class RocketRepository {
   final SpaceXDataProvider rocketRepository = SpaceXDataProvider();

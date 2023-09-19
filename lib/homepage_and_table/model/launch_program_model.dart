@@ -10,7 +10,8 @@ class LaunchProgram extends Equatable {
   String? id;
   String? launchpad;
   String? launchpadImage;
-  String? dateUtc;
+  // ignore: non_constant_identifier_names
+  String? date_utc;
   String? landPad;
   LaunchProgram({
     this.landPad = '',
@@ -22,7 +23,7 @@ class LaunchProgram extends Equatable {
     this.rocket = '',
     this.launchpad = '',
     this.launchpadImage = '',
-    this.dateUtc = '',
+    this.date_utc = '',
   });
   LaunchProgram.fromJson(Map<String, dynamic> json) {
     landPad = json['landpad'];
@@ -32,11 +33,9 @@ class LaunchProgram extends Equatable {
     crew = json['crew'];
     id = json['id'];
     rocket = json['rocket'];
-    // capsules = json['capsules'];
-    // payloads = json['payloads'];
     launchpad = json['launchpad'];
     launchpadImage = json['launchpadImage'];
-    dateUtc = json['date_utc'];
+    date_utc = json['date_utc'];
   }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -48,8 +47,7 @@ class LaunchProgram extends Equatable {
     data['id'] = id;
     data['rocket'] = rocket;
     data['launchpad'] = launchpad;
-    // data['launchpadImage'] = this.launchpadImage;
-    data['date_utc'] = dateUtc;
+    data['date_utc'] = date_utc;
 
     return data;
   }
@@ -65,6 +63,6 @@ class LaunchProgram extends Equatable {
         rocket,
         launchpad,
         launchpadImage,
-        dateUtc,
+        date_utc,
       ];
 }

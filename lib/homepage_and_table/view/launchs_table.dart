@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intl/intl.dart';
-import '../bloc/launch_bloc.dart';
+import 'package:launch_spacex/homepage_and_table/bloc/launch_bloc.dart';
 
 class LaunchTable extends StatefulWidget {
   const LaunchTable({Key? key}) : super(key: key);
@@ -15,7 +15,6 @@ class LaunchTable extends StatefulWidget {
 class _LaunchTableState extends State<LaunchTable> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -27,11 +26,9 @@ class _LaunchTableState extends State<LaunchTable> {
             backgroundColor: const Color(0xff333333),
             leading: IconButton(
               icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-              onPressed: () => Modular.to.navigate(
-                '/',
-              ),
+              onPressed: () => Modular.to.navigate('/homepage'),
             ),
-            title: const Text("Launch Table")),
+            title: const Text("app.launchTable").tr()),
         body: BlocConsumer<SpaceXBloc, SpaceXState>(
             listener: (context, state) {},
             builder: (context, state) {
@@ -71,10 +68,8 @@ class _TableWidgetState extends State<TableWidget> {
   final ScrollController _controller = ScrollController();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     items = widget.launchList;
-
     originalList = widget.launchList;
   }
 
@@ -91,44 +86,41 @@ class _TableWidgetState extends State<TableWidget> {
   Widget build(BuildContext context) {
     // someObjects.sort((a, b) => a.someProperty.compareTo(b.someProperty));
     var screenSize = MediaQuery.of(context).size;
+    String hintText = "filter.search".tr();
     return SingleChildScrollView(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
+      /// Search Bar
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(5.0),
         child: TextField(
           onChanged: (value) {
             filterSearchResults(value);
           },
           controller: textController,
-          decoration: const InputDecoration(
-              labelText: "Search",
-              hintText: "Search",
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+          decoration: InputDecoration(
+              fillColor: Colors.white,
+              filled: true,
+              hintStyle: const TextStyle(color: Colors.white),
+              labelText: hintText,
+              hintText: hintText,
+              prefixIcon: const Icon(Icons.search),
+              border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)))),
         ),
       ),
       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Date Sorting",
-              style: TextStyle(color: Colors.white),
+            Text(
+              "filter.dateSorting".tr(),
+              style: const TextStyle(color: Colors.white),
             ),
             GestureDetector(
               onTap: () {
                 setState(() {
                   _isSortDate = !_isSortDate;
                   items = items.reversed.toList();
-                  if (_isSortDate == true) {
-                    // print("Sorted items");
-                    items.sort((a, b) => b.date_utc.compareTo(a.date_utc));
-                  } else if (_isSortDate == false) {
-                    // launchList.clear();
-                    // print('Unsorted items');
-                    items = widget.launchList;
-                  }
                 });
               },
               child: Container(
@@ -144,7 +136,9 @@ class _TableWidgetState extends State<TableWidget> {
                 ),
                 child: Center(
                     child: Text(
-                  _isSortDate ? "date ↑" : "date ↓",
+                  _isSortDate
+                      ? "${"filter.date".tr()}↑"
+                      : "${"filter.date".tr()}↓",
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 )),
               ),
@@ -154,20 +148,14 @@ class _TableWidgetState extends State<TableWidget> {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Name Sorting",
-              style: TextStyle(color: Colors.white),
+            Text(
+              "filter.nameSorting".tr(),
+              style: const TextStyle(color: Colors.white),
             ),
             GestureDetector(
               onTap: () {
                 setState(() {
                   _isSortName++;
-                  // if (_isSortName >= 3) {
-                  //   items = originalList!;
-                  //   // print(originalList);
-                  //   print("origin by name");
-                  //   _isSortName = 0;
-                  // }
                   if (_isSortName == 1) {
                     items.sort((a, b) =>
                         a.name.toLowerCase().compareTo(b.name.toLowerCase()));
@@ -178,16 +166,6 @@ class _TableWidgetState extends State<TableWidget> {
                     items = originalList!;
                     // _isSortName = 0;
                   }
-
-                  // items = items.reversed.toList();
-                  // if (_isSortDate == true) {
-                  //   // print("Sorted items");
-                  //   // items.sort((a, b) => b.date_utc.compareTo(a.date_utc));
-                  // } else if (_isSortDate == false) {
-                  //   // launchList.clear();
-                  //   // print('Unsorted items');
-                  //   // items = widget.launchList;
-                  // }
                 });
               },
               child: Container(
@@ -209,14 +187,13 @@ class _TableWidgetState extends State<TableWidget> {
                       width: 1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                // ↑ → ↓ ↚ ↛ ↜ ↝ ↞ ↟
                 child: Center(
                     child: Text(
                   (_isSortName == 0)
-                      ? "name ↓"
+                      ? "${"filter.name".tr()}↓"
                       : (_isSortName == 1)
-                          ? "name ↑"
-                          : "name ↓",
+                          ? "${"filter.name".tr()} ↑"
+                          : "${"filter.name".tr()} ↓",
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 )),
               ),
@@ -226,9 +203,9 @@ class _TableWidgetState extends State<TableWidget> {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Clear",
-              style: TextStyle(color: Colors.white),
+            Text(
+              "filter.clear".tr(),
+              style: const TextStyle(color: Colors.white),
             ),
             GestureDetector(
               onTap: () {
@@ -249,10 +226,10 @@ class _TableWidgetState extends State<TableWidget> {
                   border: Border.all(color: Colors.white, width: 1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Center(
+                child: Center(
                     child: Text(
-                  "Clear filter",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  "filter.clearFilter".tr(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 )),
               ),
             ),
@@ -269,70 +246,107 @@ class _TableWidgetState extends State<TableWidget> {
             itemCount: items.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
-              return Container(
-                margin: const EdgeInsets.only(top: 10, bottom: 10),
-                height: screenSize.height * 0.1,
-                width: screenSize.width,
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(8))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                        width: screenSize.width * 0.6,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Container(
-                                padding: const EdgeInsets.all(2),
-                                margin: const EdgeInsets.all(10),
-                                width: screenSize.width * 0.15,
-                                height: screenSize.width * 0.15,
-                                decoration: BoxDecoration(
+              return GestureDetector(
+                  onTap: () {
+                    Modular.to
+                        .pushNamed('/launch-info', arguments: items[index]);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 10, bottom: 10),
+                    height: screenSize.height * 0.1,
+                    width: screenSize.width,
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(8))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                            width: screenSize.width * 0.6,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                /// Mission image
+                                Container(
+                                    padding: const EdgeInsets.all(2),
+                                    margin: const EdgeInsets.all(10),
+                                    width: screenSize.width * 0.15,
+                                    height: screenSize.width * 0.15,
+                                    decoration: BoxDecoration(
 
-                                    // color: Colors.grey,
-                                    border: Border.all(
-                                        color: Colors.grey, width: 1),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(8))),
-                                child: Image.network(
-                                  items[index].image['small'].toString(),
-                                  fit: BoxFit.cover,
-                                )),
-                            Container(
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                width: screenSize.width * 0.38,
-                                height: double.infinity,
-                                child: Column(
-                                  children: [
-                                    Text(items[index].name.toString()),
-                                    Text(
-                                      DateFormat('yyyy-MM-dd').format(
-                                          DateTime.parse(items[index]
-                                              .date_utc
-                                              .toString())),
-                                    )
-                                  ],
-                                ))
-                          ],
-                        )),
-                    Container(
-                      width: screenSize.width * 0.20,
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
-                          borderRadius: const BorderRadius.only(
-                              topRight: Radius.circular(8),
-                              bottomRight: Radius.circular(8))),
-                      child: Text((items[index].success == "null")
-                          ? "No Data"
-                          : items[index].success.toString()),
-                    )
-                  ],
-                ),
-              );
+                                        // color: Colors.grey,
+                                        border: Border.all(
+                                            color: Colors.grey, width: 1),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(8))),
+                                    child: (items[index]
+                                                .image['small']
+                                                .toString() !=
+                                            "null")
+                                        ? Image.network(
+                                            items[index]
+                                                .image['small']
+                                                .toString(),
+                                            fit: BoxFit.cover,
+                                          )
+                                        : SizedBox(
+                                            width: screenSize.width * 0.15,
+                                            height: screenSize.width * 0.15,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                const Icon(Icons.close_rounded,
+                                                    size: 30),
+                                                const Text(
+                                                  "app.noPicture",
+                                                  style:
+                                                      TextStyle(fontSize: 10),
+                                                ).tr()
+                                              ],
+                                            ))),
+
+                                /// Mission Information
+                                Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 10),
+                                    width: screenSize.width * 0.38,
+                                    height: double.infinity,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(items[index].name.toString()),
+                                        Text(
+                                            "Date: ${DateFormat('yyyy-MM-dd').format(DateTime.parse(items[index].date_utc.toString()))}")
+                                      ],
+                                    ))
+                              ],
+                            )),
+
+                        /// Success
+                        Container(
+                          alignment: Alignment.center,
+                          width: screenSize.width * 0.20,
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.5),
+                              borderRadius: const BorderRadius.only(
+                                  topRight: Radius.circular(8),
+                                  bottomRight: Radius.circular(8))),
+                          child: Text(
+                            (items[index].success == "null")
+                                ? "app.noData".tr()
+                                : (items[index].success.toString() == "true")
+                                    ? "app.success".tr()
+                                    : "app.failed".tr(),
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                        )
+                      ],
+                    ),
+                  ));
             }),
       ),
     ]));

@@ -31,7 +31,8 @@ class SpaceXDataProvider {
 
   /// Get all rocket data from the SpaceX API
   Future<http.Response> getRawCrew(id) async {
-    String url = "https://api.spacexdata.com/v4/crew/$id";
+    String url = "https://api.spacexdata.com/v4/crew/${id['crew']}";
+    print(url);
     http.Response rawCrewData = await http.get(
       Uri.parse(url),
     );

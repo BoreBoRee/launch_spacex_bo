@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../../dataprovider_api/spaceX_data_provider.dart';
-import '../model/launch_program_model.dart';
+import 'package:launch_spacex/dataprovider_api/spaceX_data_provider.dart';
+import 'package:launch_spacex/homepage_and_table/model/launch_program_model.dart';
 
 class SpaceXRepository {
   final SpaceXDataProvider spaceXDataProvider = SpaceXDataProvider();
@@ -26,7 +26,7 @@ class SpaceXRepository {
         landPad: json['cores'][0]['landpad'] ?? "not found",
         launchpad: json['launchpad'] ?? "",
         launchpadImage: imageLaunchPad,
-        dateUtc: json['date_utc'] ?? "",
+        date_utc: json['date_utc'] ?? "",
       );
       return latestLaunch;
     } catch (e) {
@@ -51,7 +51,7 @@ class SpaceXRepository {
         landPad: json[i]['cores'][0]['landpad'] ?? "",
         launchpad: json[i]['launchpad'] ?? "",
         launchpadImage: "",
-        dateUtc: json[i]['date_utc'] ?? "",
+        date_utc: json[i]['date_utc'] ?? "",
       );
       launchList.add(launchProgram);
     }

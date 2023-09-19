@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "spaceX",
+    "description": "spaceX",
+    "changeLanguage": "Change language",
+    "setting": "Setting",
+    "latestLaunches": "Latest Launches",
+    "launches": "launches",
+    "seeMore": "See more",
+    "success": "Success",
+    "failed": "Failed",
+    "noData": "No data",
+    "language": "Change language",
+    "homepage": "Homepage",
+    "launchTable": "Launch Table",
+    "noPicture": "No picture"
+  },
+  "filter": {
+    "date": "Date",
+    "name": "name",
+    "clearFilter": "Clear Filter",
+    "search": "Search",
+    "dateSorting" : "Date Sorting",
+    "nameSorting" : "Name Sorting",
+    "clear": "Clear"
+  },
+  "information": {
+    "crew": "Crew",
+    "mission" : "Mission",
+    "detail": "Details",
+    "rocket": "Rocket",
+    "noCrew": "No crew"
+  }
+}

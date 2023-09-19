@@ -9,5 +9,8 @@ abstract class InformationEvent {
 
 class InformationRequest extends InformationEvent {
   final LaunchProgram launchProgram;
-  const InformationRequest({required this.launchProgram});
+
+  const InformationRequest({
+    required this.launchProgram,
+  });
 }
