@@ -29,6 +29,14 @@ class _NavigationState extends State<NavigationPage> {
             icon: const Icon(Icons.settings),
             label: 'app.setting'.tr(),
           ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.doorbell),
+            label: 'Noti'.tr(),
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.local_offer),
+            label: 'offer'.tr(),
+          ),
         ],
         selectedItemColor: Colors.orange,
         unselectedItemColor: const Color(0xff3333333),
@@ -39,6 +47,10 @@ class _NavigationState extends State<NavigationPage> {
               Modular.to.navigate('/homepage');
             } else if (index == 1) {
               Modular.to.navigate('/setting');
+            } else if (index == 2) {
+              Modular.to.navigate('/homepage-noti');
+            } else if (index == 3) {
+              Modular.to.navigate('/offer-page');
             }
           });
         },

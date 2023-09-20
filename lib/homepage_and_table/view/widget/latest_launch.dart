@@ -13,17 +13,25 @@ Widget latestLaunchWidget(state, context) {
         width: screenSize.width,
         height: screenSize.height * 0.2,
         decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.orange.withOpacity(0.2),
+                  spreadRadius: 2,
+                  blurRadius: 2,
+                  offset: const Offset(0, 3))
+            ],
             // color: Colors.white,
             image: DecorationImage(image: NetworkImage(url), fit: BoxFit.cover),
             borderRadius: const BorderRadius.all(Radius.circular(8))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+            Expanded(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                   SizedBox(
-                      width: screenSize.width * 0.699,
+                      // width: screenSize.width * 0.699,
                       child: Align(
                           alignment: Alignment.topLeft,
                           child: Container(
@@ -37,8 +45,8 @@ Widget latestLaunchWidget(state, context) {
                           color: Colors.black.withOpacity(0.5),
                           borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(8))),
-                      width: screenSize.width * 0.699,
-                      height: screenSize.height * 0.05,
+                      // width: screenSize.width * 0.65,
+                      // height: screenSize.height * 0.05,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -59,11 +67,12 @@ Widget latestLaunchWidget(state, context) {
                           ),
                         ],
                       )),
-                ]),
+                ])),
             Container(
               alignment: Alignment.center,
               width: screenSize.width * 0.25,
               height: double.infinity,
+              // padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.6),
                   borderRadius: const BorderRadius.only(
